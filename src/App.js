@@ -1,8 +1,7 @@
 import React from 'react';
-import Main from './main';
-import MyForm from './myForm';
-import YelpResult from './yelpResult';
-import logo from './logo.svg';
+import Main from './Main/main';
+import MyForm from './Main/myForm';
+import YelpResult from './Main/yelpResult';
 import './App.css';
 
 class App extends React.Component {
