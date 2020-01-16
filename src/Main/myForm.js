@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import YelpResult from './yelpResult';
 
 class MyForm extends Component {
 
@@ -43,7 +44,7 @@ class MyForm extends Component {
         console.log(this.state);
     }
 
-    //let APIKey = "Bearer bdI2fQXX2e6OG22JRbJbRJrFwIe8BNdfK01E9Pb9fA7fgi8JDm2IVtdn_1MLzJLNFLpACOpVPJjAdCqsfRwG-klJCYrkzV08LUIsxxtBuRiTbG-uQqZGIsHFd6zVXHYx"
+    APIKey = "Bearer bdI2fQXX2e6OG22JRbJbRJrFwIe8BNdfK01E9Pb9fA7fgi8JDm2IVtdn_1MLzJLNFLpACOpVPJjAdCqsfRwG-klJCYrkzV08LUIsxxtBuRiTbG-uQqZGIsHFd6zVXHYx"
 
     componentDidMount() {
         // fetch(`https://api.yelp.com/v3/businesses/search?term=${this.cuisineValue}&location=${this.addressValue}&limit=1&sort_by=rating`, {
@@ -61,6 +62,32 @@ class MyForm extends Component {
         // })
     }
 
+    myClick = () => {
+        fetch(`https://api.yelp.com/v3/businesses/search?term=chinese&location=Astoria&limit=12&sort_by=rating`, {
+            method: 'GET',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.APIKey}`
+            },
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) =>{
+            console.log(response);
+            // handleResponse(response);
+            this.setState({name: response.name})
+        })
+        .catch(function(error){
+            console.log("Please Try Again");
+        })
+    }
+
+    // handleResponse(response) {
+    //     this.setState({name: response.name})
+    // }
+
     render() {
         return(<div>
             <p>Form Component</p>
@@ -76,8 +103,12 @@ class MyForm extends Component {
                     onChange = {this.addressChange}
                     // onChange = {this.handleChange }
                     />
-                    <input type="submit" value="Submit" />
+                    {/* <input type="submit" value="Submit" /> */}
+                    <button onClick={this.myClick}>Generate</button>
                 </form>
+            </div>
+            <div>
+                <YelpResult />
             </div>
         </div>)
     }
