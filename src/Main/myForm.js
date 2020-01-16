@@ -46,19 +46,19 @@ class MyForm extends Component {
     //let APIKey = "Bearer bdI2fQXX2e6OG22JRbJbRJrFwIe8BNdfK01E9Pb9fA7fgi8JDm2IVtdn_1MLzJLNFLpACOpVPJjAdCqsfRwG-klJCYrkzV08LUIsxxtBuRiTbG-uQqZGIsHFd6zVXHYx"
 
     componentDidMount() {
-        fetch(`https://api.yelp.com/v3/businesses/search?term=${this.cuisineValue}&location=${this.addressValue}&limit=1&sort_by=rating`, {
-            method: 'GET',
-        })
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) =>{
-            console.log(response);
-            handleResponse(response);
-        })
-        .catch(function(error){
-            console.log("Please Try Again");
-        })
+        // fetch(`https://api.yelp.com/v3/businesses/search?term=${this.cuisineValue}&location=${this.addressValue}&limit=1&sort_by=rating`, {
+        //     method: 'GET',
+        // })
+        // .then((response) => {
+        //     return response.json();
+        // })
+        // .then((response) =>{
+        //     console.log(response);
+        //     handleResponse(response);
+        // })
+        // .catch(function(error){
+        //     console.log("Please Try Again");
+        // })
     }
 
     render() {
